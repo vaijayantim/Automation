@@ -67,8 +67,8 @@ public class validate {
         //JsonObject entityobject = entity.get(0).getAsJsonObject();
         String crosswalkValue = entity.get(0).getAsJsonObject().get("crosswalks").getAsJsonArray().get(0).getAsJsonObject().get("value").getAsString();
         System.out.println("Crosswalk value: "+crosswalkValue);
-        JsonObject attributes = entity.get(0).getAsJsonObject().get("attributes").getAsJsonArray().get(0).getAsJsonObject().get("USFN").getAsJsonObject().get("value").getAsJsonObject();
-        //getNestedvalues(attributes);
+        JsonObject attributes = entity.get(0).getAsJsonObject().get("attributes").getAsJsonObject();
+        getNestedvalues(attributes);
         //JsonArray attributeArray =(JsonArray) attributes;
       /*  for(int i=0;i<attributes.size();i++)
         {
@@ -89,7 +89,7 @@ public class validate {
                 JsonObject attribute = jsonElement.getAsJsonObject();
 
                 String attributeName = entry.getKey();
-                if (entry.getKey().equalsIgnoreCase("SYYN") || entry.getKey().equalsIgnoreCase("USFN") || entry.getKey().equalsIgnoreCase("Address")) {
+                if (entry.getKey().equalsIgnoreCase("SYYN") || entry.getKey().equalsIgnoreCase("USFN") || entry.getKey().equalsIgnoreCase("Address")||entry.getKey().equalsIgnoreCase("Phone")) {
                     JsonArray nestedAttributesArray = entry.getValue().getAsJsonArray();
                     if (nestedAttributesArray.get(0).isJsonObject()) {
                         if (nestedAttributesArray.get(0).getAsJsonObject().get("value").isJsonObject()) {
